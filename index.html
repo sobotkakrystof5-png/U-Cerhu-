@@ -215,70 +215,21 @@
     <!-- ═══════════════════ HERO ═══════════════════ -->
     <section id="hero" class="relative min-h-screen flex flex-col overflow-hidden">
 
-        <!-- ── Pozadí: noční obloha nad statkem ── -->
-        <div class="absolute inset-0" aria-hidden="true" style="background: radial-gradient(ellipse 85% 55% at 50% 20%, rgba(212,175,55,0.11) 0%, rgba(96,108,56,0.07) 38%, transparent 65%), linear-gradient(162deg, #030C15 0%, #050F08 52%, #0C1C08 100%);">
+        <!-- ── Pozadí: dvorek statku U Cerhů ── -->
+        <div class="absolute inset-0" aria-hidden="true">
 
-            <!-- Hvězdné nebe -->
-            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                <circle cx="73" cy="45" r="1" fill="white" opacity="0.35"/>
-                <circle cx="148" cy="28" r="1" fill="white" opacity="0.45"/>
-                <circle cx="220" cy="75" r="1" fill="white" opacity="0.28"/>
-                <circle cx="305" cy="15" r="1.5" fill="white" opacity="0.55"/>
-                <circle cx="380" cy="95" r="1" fill="white" opacity="0.25"/>
-                <circle cx="455" cy="35" r="1" fill="white" opacity="0.4"/>
-                <circle cx="540" cy="60" r="1" fill="white" opacity="0.32"/>
-                <circle cx="620" cy="20" r="1.5" fill="white" opacity="0.58"/>
-                <circle cx="698" cy="85" r="1" fill="white" opacity="0.28"/>
-                <circle cx="780" cy="40" r="1" fill="white" opacity="0.45"/>
-                <circle cx="865" cy="15" r="1" fill="white" opacity="0.5"/>
-                <circle cx="945" cy="70" r="1.5" fill="white" opacity="0.38"/>
-                <circle cx="1020" cy="30" r="1" fill="white" opacity="0.35"/>
-                <circle cx="1095" cy="55" r="1" fill="white" opacity="0.42"/>
-                <circle cx="1180" cy="18" r="1.5" fill="white" opacity="0.52"/>
-                <circle cx="1265" cy="80" r="1" fill="white" opacity="0.28"/>
-                <circle cx="1350" cy="45" r="1" fill="white" opacity="0.38"/>
-                <circle cx="1420" cy="65" r="1" fill="white" opacity="0.32"/>
-                <circle cx="100" cy="140" r="1" fill="white" opacity="0.28"/>
-                <circle cx="195" cy="170" r="1.5" fill="white" opacity="0.48"/>
-                <circle cx="270" cy="125" r="1" fill="white" opacity="0.38"/>
-                <circle cx="365" cy="190" r="1" fill="white" opacity="0.22"/>
-                <circle cx="450" cy="145" r="1" fill="white" opacity="0.42"/>
-                <circle cx="525" cy="180" r="1.5" fill="white" opacity="0.38"/>
-                <circle cx="610" cy="130" r="1" fill="white" opacity="0.32"/>
-                <circle cx="685" cy="175" r="1" fill="white" opacity="0.28"/>
-                <circle cx="770" cy="155" r="1.5" fill="white" opacity="0.48"/>
-                <circle cx="855" cy="120" r="1" fill="white" opacity="0.38"/>
-                <circle cx="940" cy="185" r="1" fill="white" opacity="0.32"/>
-                <circle cx="1010" cy="142" r="1" fill="white" opacity="0.42"/>
-                <circle cx="1090" cy="178" r="1.5" fill="white" opacity="0.48"/>
-                <circle cx="1170" cy="128" r="1" fill="white" opacity="0.28"/>
-                <circle cx="1258" cy="165" r="1" fill="white" opacity="0.38"/>
-                <circle cx="1342" cy="118" r="1.5" fill="white" opacity="0.44"/>
-                <circle cx="52" cy="245" r="1" fill="white" opacity="0.28"/>
-                <circle cx="168" cy="272" r="1" fill="white" opacity="0.32"/>
-                <circle cx="292" cy="232" r="1.5" fill="white" opacity="0.42"/>
-                <circle cx="412" cy="268" r="1" fill="white" opacity="0.22"/>
-                <circle cx="534" cy="242" r="1" fill="white" opacity="0.38"/>
-                <circle cx="642" cy="278" r="1.5" fill="white" opacity="0.32"/>
-                <circle cx="754" cy="238" r="1" fill="white" opacity="0.28"/>
-                <circle cx="872" cy="262" r="1" fill="white" opacity="0.38"/>
-                <circle cx="988" cy="237" r="1.5" fill="white" opacity="0.42"/>
-                <circle cx="1102" cy="278" r="1" fill="white" opacity="0.28"/>
-                <circle cx="1224" cy="242" r="1" fill="white" opacity="0.32"/>
-                <circle cx="1382" cy="268" r="1.5" fill="white" opacity="0.38"/>
-                <!-- Jasné hvězdy -->
-                <circle cx="182" cy="52" r="2" fill="white" opacity="0.72"/>
-                <circle cx="737" cy="33" r="2.5" fill="white" opacity="0.82"/>
-                <circle cx="1048" cy="48" r="2" fill="white" opacity="0.68"/>
-                <circle cx="474" cy="110" r="2" fill="white" opacity="0.62"/>
-                <circle cx="1284" cy="92" r="2" fill="white" opacity="0.72"/>
-                <circle cx="320" cy="205" r="1.5" fill="white" opacity="0.55"/>
-                <circle cx="1138" cy="215" r="1.5" fill="white" opacity="0.52"/>
-            </svg>
+            <!-- Fotografie areálu -->
+            <img src="assets/images/img-6571.jpg"
+                 alt="Dvorek historického statku U Cerhů v Kněžmostě – svatební místo v Českém ráji"
+                 class="absolute inset-0 w-full h-full object-cover object-center"
+                 fetchpriority="high">
+
+            <!-- Tmavý overlay pro čitelnost textu -->
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.56) 55%, rgba(0,0,0,0.72) 100%);"></div>
 
             <!-- Velký vodoznak loga v pozadí -->
             <div class="absolute inset-0 flex items-center justify-center pointer-events-none" style="padding-top:6%;">
-                <svg viewBox="0 0 400 400" fill="none" style="width:min(660px,82vw);height:auto;opacity:0.034;" aria-hidden="true">
+                <svg viewBox="0 0 400 400" fill="none" style="width:min(660px,82vw);height:auto;opacity:0.06;" aria-hidden="true">
                     <circle cx="200" cy="200" r="170" fill="white"/>
                     <circle cx="200" cy="200" r="75" fill="black"/>
                     <rect x="30" y="108" width="340" height="64" fill="black"/>
@@ -306,7 +257,8 @@
 
             <!-- Odznak: původ -->
             <div class="reveal mb-6 sm:mb-8">
-                <span class="inline-block font-sans text-[10px] sm:text-[11px] tracking-[0.38em] uppercase border border-[rgba(212,175,55,0.28)] text-[rgba(212,175,55,0.55)] px-4 sm:px-5 py-1.5 rounded-full">
+                <span class="inline-block font-sans text-[11px] sm:text-[13px] tracking-[0.32em] uppercase px-5 sm:px-6 py-2 rounded-full font-semibold"
+                      style="border:1px solid rgba(212,175,55,0.75);color:#F0D060;background:rgba(0,0,0,0.35);text-shadow:0 1px 6px rgba(0,0,0,0.9);letter-spacing:0.28em;">
                     Est. 1590&ensp;·&ensp;Kněžmost&ensp;·&ensp;Český ráj
                 </span>
             </div>
@@ -326,16 +278,16 @@
 
             <!-- ★★★ HESLA — SRDCE HERO SEKCE ★★★ -->
             <div class="reveal reveal-delay-1 mb-7 sm:mb-10 space-y-1.5 sm:space-y-3">
-                <p class="font-serif italic text-white/82 leading-tight"
-                   style="font-size:clamp(1.3rem,4.2vw,3.4rem);text-shadow:0 2px 30px rgba(0,0,0,0.8);">
+                <p class="font-serif italic text-white leading-tight"
+                   style="font-size:clamp(1.3rem,4.2vw,3.4rem);text-shadow:0 1px 3px rgba(0,0,0,1),0 3px 18px rgba(0,0,0,0.9),0 6px 40px rgba(0,0,0,0.7);">
                     — Statek v&nbsp;Kněžmostě —
                 </p>
                 <p class="font-serif italic leading-tight"
-                   style="font-size:clamp(1.3rem,4.2vw,3.4rem);color:#D4AF37;opacity:0.92;text-shadow:0 2px 30px rgba(0,0,0,0.8);">
+                   style="font-size:clamp(1.3rem,4.2vw,3.4rem);color:#F0D060;text-shadow:0 1px 3px rgba(0,0,0,1),0 3px 18px rgba(0,0,0,0.9),0 6px 40px rgba(0,0,0,0.7);">
                     — Brána do&nbsp;Českého ráje —
                 </p>
-                <p class="font-serif italic text-white/82 leading-tight"
-                   style="font-size:clamp(1.3rem,4.2vw,3.4rem);text-shadow:0 2px 30px rgba(0,0,0,0.8);">
+                <p class="font-serif italic text-white leading-tight"
+                   style="font-size:clamp(1.3rem,4.2vw,3.4rem);text-shadow:0 1px 3px rgba(0,0,0,1),0 3px 18px rgba(0,0,0,0.9),0 6px 40px rgba(0,0,0,0.7);">
                     — Místo pro&nbsp;Váš příběh —
                 </p>
             </div>
@@ -354,10 +306,10 @@
             </p>
 
             <!-- Popis -->
-            <p class="reveal reveal-delay-2 text-white/60 leading-relaxed max-w-xl mx-auto mb-9 sm:mb-11 font-light"
-               style="font-size:clamp(0.9rem,1.85vw,1.1rem);">
+            <p class="reveal reveal-delay-2 leading-relaxed max-w-xl mx-auto mb-9 sm:mb-11"
+               style="font-size:clamp(1rem,2vw,1.2rem);color:#F5F0E8;font-weight:400;text-shadow:0 1px 4px rgba(0,0,0,1),0 3px 18px rgba(0,0,0,0.85);">
                 Exkluzivní svatební statek v srdci Českého ráje. Vždy
-                <strong class="font-semibold text-white/88">jedna svatba, celý areál jen váš</strong>
+                <strong style="font-weight:700;color:#fff;">jedna svatba, celý areál jen váš</strong>
                 &nbsp;— žádný spěch, absolutní soukromí.
             </p>
 
@@ -698,6 +650,8 @@
                     <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w5.png" alt="Exteriér a interiér statku U Cerhů v Kněžmostě – příjezdová cesta, strom a sál" class="w-full block" loading="lazy"></figure>
                     <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/gbuc.png" alt="Personál statku U Cerhů v Kněžmostě – značkový servis a pohostinnost U Cerhů" class="w-full block" loading="lazy"></figure>
                     <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-1_websize.jpg" alt="Zahrada a dvůr statku U Cerhů připravené na svatební oslavy – světýlka a slavnostní výzdoba" class="w-full block" loading="lazy"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/kavarnička.jpg" alt="Svatební kavárnička U Cerhů – zastřešená terasa s dřevěným nábytkem, grillem a logem U Cerhů v historickém statku Kněžmost" class="w-full block" loading="lazy"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/kuchyne.jpg" alt="Profesionální kuchyně statku U Cerhů – gastro vybavení pro přípravu svatebních hostin a rodinných oslav v Kněžmostě" class="w-full block" loading="lazy"></figure>
                 </div>
             </div>
 
@@ -904,6 +858,7 @@
             <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-8 text-xs text-white/30">
                 <p>© <span id="year"></span> U Cerhů · Na Rynku 7, Kněžmost. Všechna práva vyhrazena.</p>
                 <p>Svatby Český ráj · Ubytování Český ráj · Statek na svatbu Kněžmost</p>
+                <p>Vyrobeno <a href="https://www.vizeon.cz" target="_blank" rel="noopener noreferrer" class="hover:text-white/60 transition underline underline-offset-2">vizeon.cz</a></p>
             </div>
         </div>
     </footer>
