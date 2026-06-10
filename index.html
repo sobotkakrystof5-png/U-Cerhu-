@@ -9,7 +9,9 @@
     <meta name="author" content="U Cerhů">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ucerhu.cz/">
-    <link rel="preload" as="image" href="assets/images/img-6571.jpg" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/img-6571-hero-mobile.webp" fetchpriority="high" media="(max-width: 767px)" imagesrcset="assets/images/img-6571-hero-mobile.webp">
+    <link rel="preload" as="image" href="assets/images/img-6571-hero-tablet.webp" fetchpriority="high" media="(min-width: 768px) and (max-width: 1279px)" imagesrcset="assets/images/img-6571-hero-tablet.webp">
+    <link rel="preload" as="image" href="assets/images/img-6571-hero-desktop.webp" fetchpriority="high" media="(min-width: 1280px)" imagesrcset="assets/images/img-6571-hero-desktop.webp">
 
     <meta property="og:type" content="website">
     <meta property="og:locale" content="cs_CZ">
@@ -214,10 +216,15 @@
         <div class="absolute inset-0" aria-hidden="true">
 
             <!-- Fotografie areálu -->
-            <img src="assets/images/img-6571.jpg"
-                 alt="Dvorek historického statku U Cerhů v Kněžmostě – svatební místo v Českém ráji"
-                 class="absolute inset-0 w-full h-full object-cover object-center"
-                 fetchpriority="high">
+            <picture>
+                <source media="(max-width: 767px)" srcset="assets/images/img-6571-hero-mobile.webp" type="image/webp">
+                <source media="(min-width: 768px) and (max-width: 1279px)" srcset="assets/images/img-6571-hero-tablet.webp" type="image/webp">
+                <source media="(min-width: 1280px)" srcset="assets/images/img-6571-hero-desktop.webp" type="image/webp">
+                <img src="assets/images/img-6571.jpg"
+                     alt="Dvorek historického statku U Cerhů v Kněžmostě – svatební místo v Českém ráji"
+                     class="absolute inset-0 w-full h-full object-cover object-center"
+                     fetchpriority="high" decoding="async">
+            </picture>
 
             <!-- Tmavý overlay pro čitelnost textu -->
             <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.56) 55%, rgba(0,0,0,0.72) 100%);"></div>
