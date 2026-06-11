@@ -32,6 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
 
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -93,7 +94,8 @@
 
     <style>
         html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-        body { background-color: #FDFBF7; color: #1E293B; -webkit-font-smoothing: antialiased; }
+        body { background-color: #FDFBF7; color: #1E293B; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; overscroll-behavior-y: contain; }
+        a, button { touch-action: manipulation; }
         ::selection { background-color: #606C38; color: #FDFBF7; }
 
         /* Reveal animations */
@@ -142,7 +144,12 @@
 
         @media (max-width: 768px) {
             .stat-number { font-size: 36px; }
+            .reveal { transition-duration: .5s; }
         }
+        @media (hover: none) {
+            .photo-zoom img { transition: none; }
+        }
+        #galerie { contain: layout style; }
     </style>
 </head>
 
@@ -151,7 +158,7 @@
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:z-[200] focus:top-3 focus:left-3 focus:bg-sage focus:text-cream focus:px-4 focus:py-2 focus:rounded-lg">Přeskočit na obsah</a>
 
     <!-- ═══════════════════ NAV ═══════════════════ -->
-    <header id="navbar" class="fixed top-0 inset-x-0 z-50 bg-sage backdrop-blur-md border-b border-white/10">
+    <header id="navbar" class="fixed top-0 inset-x-0 z-50 bg-sage border-b border-white/10">
         <nav class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-20" aria-label="Hlavní navigace">
 
             <!-- Logo -->
@@ -396,7 +403,7 @@
                         </div>
                     </div>
                     <div class="mt-8 flex items-center gap-5 bg-ink-deep/5 border border-sage/20 rounded-xl px-5 py-4">
-                        <img src="assets/images/jc-stamp.png" alt="Historické razítko Josef Cerha hostinský v Kněžmostě – autentická tradice od roku 1907" class="h-24 w-auto opacity-90" style="filter: sepia(0.3) contrast(1.1);">
+                        <img src="assets/images/jc-stamp.png" alt="Historické razítko Josef Cerha hostinský v Kněžmostě – autentická tradice od roku 1907" class="h-24 w-auto opacity-90" style="filter: sepia(0.3) contrast(1.1);" loading="lazy" decoding="async">
                         <div>
                             <p class="text-xs font-semibold text-sage uppercase tracking-[0.15em] mb-1">Originální archivní razítko</p>
                             <p class="text-sm text-ink/80 italic leading-relaxed">Původní razítko Josefa Cerhy,<br>hostinského v Kněžmostě</p>
@@ -407,11 +414,11 @@
                 <div class="reveal order-1 lg:order-2">
                     <div class="grid grid-cols-2 gap-3">
                         <div class="photo-zoom rounded-2xl overflow-hidden aspect-[3/4] shadow-lg">
-                            <img src="assets/images/img-6824.jpg" alt="Historický vchod Hostince U Cerhů v Kněžmostě – původní dveře a kroniky generací hostinských od roku 1907" class="w-full h-full object-cover">
+                            <img src="assets/images/img-6824.jpg" alt="Historický vchod Hostince U Cerhů v Kněžmostě – původní dveře a kroniky generací hostinských od roku 1907" class="w-full h-full object-cover" loading="lazy" decoding="async">
                         </div>
                         <div class="flex flex-col gap-3 mt-8">
                             <div class="photo-zoom rounded-2xl overflow-hidden aspect-square shadow-lg">
-                                <img src="assets/images/img-6828.jpg" alt="Historická budova statku U Cerhů v Kněžmostě – fasáda s nápisem na kamenném náměstí Českého ráje" class="w-full h-full object-cover">
+                                <img src="assets/images/img-6828.jpg" alt="Historická budova statku U Cerhů v Kněžmostě – fasáda s nápisem na kamenném náměstí Českého ráje" class="w-full h-full object-cover" loading="lazy" decoding="async">
                             </div>
                             <div class="bg-ink-deep rounded-2xl p-5 text-center">
                                 <p class="font-serif text-3xl font-bold text-sage-light">120+</p>
@@ -428,7 +435,7 @@
     <div class="flex items-center justify-center py-4 bg-cream" aria-hidden="true">
         <div class="flex items-center gap-5 max-w-xs mx-auto w-full">
             <span class="flex-1 h-px bg-gradient-to-r from-transparent to-sage/30"></span>
-            <img src="assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);">
+            <img src="assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);" loading="lazy">
             <span class="flex-1 h-px bg-gradient-to-l from-transparent to-sage/30"></span>
         </div>
     </div>
@@ -473,7 +480,7 @@
                 </div>
 
                 <div class="reveal photo-zoom rounded-3xl overflow-hidden shadow-2xl aspect-[4/5]">
-                    <img src="assets/images/tree.png" alt="Venkovní svatební obřad pod stromem na statku U Cerhů – romantická ceremonie s bílými drapériemi v Kněžmostě" class="w-full h-full object-cover">
+                    <img src="assets/images/tree.png" alt="Venkovní svatební obřad pod stromem na statku U Cerhů – romantická ceremonie s bílými drapériemi v Kněžmostě" class="w-full h-full object-cover" loading="lazy" decoding="async">
                 </div>
             </div>
 
@@ -517,7 +524,7 @@
     <div class="flex items-center justify-center py-4 bg-cream" aria-hidden="true">
         <div class="flex items-center gap-5 max-w-xs mx-auto w-full">
             <span class="flex-1 h-px bg-gradient-to-r from-transparent to-sage/30"></span>
-            <img src="assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);">
+            <img src="assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);" loading="lazy">
             <span class="flex-1 h-px bg-gradient-to-l from-transparent to-sage/30"></span>
         </div>
     </div>
@@ -535,7 +542,7 @@
                 <!-- Main building — larger card -->
                 <div class="reveal lg:col-span-3">
                     <div class="photo-zoom rounded-2xl overflow-hidden shadow-xl aspect-[16/10] mb-4">
-                        <img src="assets/images/Ubytov%C3%A1n%C3%AD%20U%20Cerhu.JPG" alt="Ubytování U Cerhů – pokoje v hlavní budově historického statku v Kněžmostě, Český ráj" class="w-full h-full object-cover">
+                        <img src="assets/images/Ubytov%C3%A1n%C3%AD%20U%20Cerhu.JPG" alt="Ubytování U Cerhů – pokoje v hlavní budově historického statku v Kněžmostě, Český ráj" class="w-full h-full object-cover" loading="lazy" decoding="async">
                     </div>
                     <div class="bg-creamdark rounded-2xl p-6">
                         <p class="font-serif text-xl font-semibold mb-4">Hlavní budova — 3 pokoje</p>
@@ -559,7 +566,7 @@
                 <!-- Holiday cottage -->
                 <div class="reveal lg:col-span-2">
                     <div class="photo-zoom rounded-2xl overflow-hidden shadow-xl aspect-square mb-4">
-                        <img src="assets/images/img-6576.jpg" alt="Nový apartmán v prázdninovém domku U Cerhů – prostorný obývací pokoj s kuchyní a podkrovní ložnicí" class="w-full h-full object-cover">
+                        <img src="assets/images/img-6576.jpg" alt="Nový apartmán v prázdninovém domku U Cerhů – prostorný obývací pokoj s kuchyní a podkrovní ložnicí" class="w-full h-full object-cover" loading="lazy" decoding="async">
                     </div>
                     <div class="bg-ink-deep rounded-2xl p-6">
                         <div class="flex items-center gap-2 mb-4">
@@ -588,7 +595,7 @@
     <div class="flex items-center justify-center py-4 bg-cream" aria-hidden="true">
         <div class="flex items-center gap-5 max-w-xs mx-auto w-full">
             <span class="flex-1 h-px bg-gradient-to-r from-transparent to-sage/30"></span>
-            <img src="assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);">
+            <img src="assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);" loading="lazy">
             <span class="flex-1 h-px bg-gradient-to-l from-transparent to-sage/30"></span>
         </div>
     </div>
@@ -598,16 +605,19 @@
         <div class="max-w-7xl mx-auto px-5 sm:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14 reveal">
                 <p class="text-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">Rodinná pohostinnost od roku 1907</p>
-                <h2 class="font-serif text-4xl sm:text-5xl font-bold leading-tight mb-5 text-white">Vítejte<br>U Cerhů</h2>
-                <p class="text-white/60 text-lg leading-relaxed">Pět generací rodiny Cerhů. Jeden závazek — aby se každý host cítil jako doma. Přijďte a přesvědčte se sami.</p>
+                <h2 class="font-serif text-4xl sm:text-5xl font-bold leading-tight mb-6 text-white">Vítejte<br>U Cerhů</h2>
+                <p class="font-serif text-2xl sm:text-3xl font-bold leading-tight tracking-wide">
+                    <span class="text-gold">5 generací.</span>
+                    <span class="text-white/90"> 1 závazek.</span>
+                </p>
             </div>
 
             <div class="grid sm:grid-cols-2 gap-8 reveal">
-                <figure class="photo-zoom rounded-2xl overflow-hidden shadow-2xl">
-                    <img src="assets/images/gbuc.png" alt="Rodina a tým statku U Cerhů v Kněžmostě – pět generací pohostinnosti a osobního přístupu ke každému svatebnímu páru" class="w-full block" loading="lazy">
-                </figure>
                 <figure class="photo-zoom rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center bg-white/5">
                     <img src="assets/images/jc-stamp.png" alt="Historické razítko Josef Cerha hostinský v Kněžmostě – autentická tradice od roku 1907" class="w-full block" style="filter: sepia(0.2) brightness(1.15) contrast(1.05); opacity: 0.9;" loading="lazy">
+                </figure>
+                <figure class="photo-zoom rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="assets/images/gbuc.png" alt="Rodina a tým statku U Cerhů v Kněžmostě – pět generací pohostinnosti a osobního přístupu ke každému svatebnímu páru" class="w-full block" loading="lazy" decoding="async">
                 </figure>
             </div>
         </div>
@@ -617,7 +627,7 @@
     <div class="flex items-center justify-center py-4 bg-cream" aria-hidden="true">
         <div class="flex items-center gap-5 max-w-xs mx-auto w-full">
             <span class="flex-1 h-px bg-gradient-to-r from-transparent to-sage/30"></span>
-            <img src="assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);">
+            <img src="assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);" loading="lazy">
             <span class="flex-1 h-px bg-gradient-to-l from-transparent to-sage/30"></span>
         </div>
     </div>
@@ -635,69 +645,69 @@
             <div class="reveal mb-12">
                 <p class="text-xs font-semibold tracking-[0.2em] uppercase text-sage mb-4">Svatby</p>
                 <div class="gallery-grid">
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-1_websize.jpg" alt="Svatební obřad na statku U Cerhů v Českém ráji" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-2_websize.jpg" alt="Slavnostní novomanželé na statku U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-11_websize.jpg" alt="Svatební tabule s výzdobou na statku U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-14_websize.jpg" alt="Obřadní prostor historického statku U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-16_websize.jpg" alt="Romantická atmosféra svatby U Cerhů v Českém ráji" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-25_websize.jpg" alt="Hosté na svatební oslavě U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-28_websize.jpg" alt="Venkovní obřad na statku U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-29_websize.jpg" alt="Svatební výzdoba na historickém statku U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-37_websize.jpg" alt="Radost novomanželů na statku U Cerhů Kněžmost" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-91_websize.jpg" alt="Slavnostní hostina ve stodole U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-93_websize.jpg" alt="Catering a raut na svatbě U Cerhů Český ráj" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-104_websize.jpg" alt="Novomanželé v prostorách statku U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-105_websize.jpg" alt="Večerní oslava na statku U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-439_websize.jpg" alt="Detail svatební výzdoby U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-600_websize.jpg" alt="Tanec novomanželů na statku U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-892_websize.jpg" alt="Svatební hostina na statku U Cerhů v Kněžmostě" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO_BW-1_websize.jpg" alt="Černobílý portrét novomanželů U Cerhů – romantická svatba Český ráj" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/tree.png" alt="Venkovní obřad pod stromem na statku U Cerhů – romantická ceremonie s bílými drapériemi a lucernami" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w4.png" alt="Venkovní obřad s dřevěnými lavicemi na trávě statku U Cerhů v Kněžmostě – ideální svatba v Českém ráji" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w1.png" alt="Svatební stodola U Cerhů – obřad v historické stodole, svatební dort a šaty" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w3.png" alt="Svatební výzdoba U Cerhů – nápis Mr & Mrs, stůl pod stromem a florální dekorace" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6826.jpg" alt="Slavnostně prostřený stůl ve svatebním sále statku U Cerhů – dekorace, svíčky a světýlka" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6744.jpg" alt="Slavnostní bankátní stůl ve stodole statku U Cerhů – elegantní výzdoba s tylovou výzdobou a kyticemi" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6835.jpg" alt="Novomanželé na statku U Cerhů – romantický noční portrét s jiskrami tvořícími nápis LOVE" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6836.jpg" alt="Přípravy na svatební den na statku U Cerhů – detail šatů, snubních prstenů a družiček v čekání" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6829.jpg" alt="Catering a raut na svatbě U Cerhů – šéfkuchaři připravují jídlo, hosté u bufetového stolu" class="w-full block" loading="lazy"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-1_websize.jpg" alt="Svatební obřad na statku U Cerhů v Českém ráji" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-2_websize.jpg" alt="Slavnostní novomanželé na statku U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-11_websize.jpg" alt="Svatební tabule s výzdobou na statku U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-14_websize.jpg" alt="Obřadní prostor historického statku U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-16_websize.jpg" alt="Romantická atmosféra svatby U Cerhů v Českém ráji" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-25_websize.jpg" alt="Hosté na svatební oslavě U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-28_websize.jpg" alt="Venkovní obřad na statku U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-29_websize.jpg" alt="Svatební výzdoba na historickém statku U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-37_websize.jpg" alt="Radost novomanželů na statku U Cerhů Kněžmost" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-91_websize.jpg" alt="Slavnostní hostina ve stodole U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-93_websize.jpg" alt="Catering a raut na svatbě U Cerhů Český ráj" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-104_websize.jpg" alt="Novomanželé v prostorách statku U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-105_websize.jpg" alt="Večerní oslava na statku U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-439_websize.jpg" alt="Detail svatební výzdoby U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-600_websize.jpg" alt="Tanec novomanželů na statku U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-892_websize.jpg" alt="Svatební hostina na statku U Cerhů v Kněžmostě" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO_BW-1_websize.jpg" alt="Černobílý portrét novomanželů U Cerhů – romantická svatba Český ráj" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/tree.png" alt="Venkovní obřad pod stromem na statku U Cerhů – romantická ceremonie s bílými drapériemi a lucernami" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w4.png" alt="Venkovní obřad s dřevěnými lavicemi na trávě statku U Cerhů v Kněžmostě – ideální svatba v Českém ráji" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w1.png" alt="Svatební stodola U Cerhů – obřad v historické stodole, svatební dort a šaty" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w3.png" alt="Svatební výzdoba U Cerhů – nápis Mr & Mrs, stůl pod stromem a florální dekorace" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6826.jpg" alt="Slavnostně prostřený stůl ve svatebním sále statku U Cerhů – dekorace, svíčky a světýlka" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6744.jpg" alt="Slavnostní bankátní stůl ve stodole statku U Cerhů – elegantní výzdoba s tylovou výzdobou a kyticemi" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6835.jpg" alt="Novomanželé na statku U Cerhů – romantický noční portrét s jiskrami tvořícími nápis LOVE" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6836.jpg" alt="Přípravy na svatební den na statku U Cerhů – detail šatů, snubních prstenů a družiček v čekání" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6829.jpg" alt="Catering a raut na svatbě U Cerhů – šéfkuchaři připravují jídlo, hosté u bufetového stolu" class="w-full block" loading="lazy" decoding="async"></figure>
                 </div>
             </div>
 
             <div class="reveal mb-12">
                 <p class="text-xs font-semibold tracking-[0.2em] uppercase text-sage mb-4">Místo & prostory</p>
                 <div class="gallery-grid">
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6857.jpg" alt="Letecký pohled na statek U Cerhů v Kněžmostě – historická budova s arkádami a zahradou" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6856.jpg" alt="Dronový pohled na areál statku U Cerhů – hlavní budova, stodola a zahrada v Kněžmostě" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-5285.jpg" alt="Večerní atmosféra statku U Cerhů – osvětlené arkády a terasa s pohádkovými světýlky" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6605.jpg" alt="Levandulová zahrada statku U Cerhů v Kněžmostě – romantická atmosféra Českého ráje" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6571.jpg" alt="Dvorek statku U Cerhů v Kněžmostě – zelené stromy, travnatá plocha a historické budovy" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6513.jpg" alt="Zahrada statku U Cerhů – okrasný strom s lavičkou a pohled na domek pro hosty" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6516.jpg" alt="Arkádový dvůr statku U Cerhů – historické oblouky, kvetoucí okna a zelená zahrada" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6806.jpg" alt="Pohled z podloubí statku U Cerhů na zahradu – historická architektura a letní stromy" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6599.jpg" alt="Arkádová chodba hlavní budovy statku U Cerhů – historické oblouky a dřevěné zábradlí" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6580.jpg" alt="Venkovní bar statku U Cerhů – přenosný barový pult s vínem na zahradě v Kněžmostě" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6570.jpg" alt="Letní dvůr statku U Cerhů – barový pult s vínem pod stromy v zahradě" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6579.jpg" alt="Přivítání v Hostinci U Cerhů – vintage nástěnka s pohlednicemi a nápisem U Cerhů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/stodola.png" alt="Vinotéka a bar statku U Cerhů – historický prostor s výběrem vín a nápojů" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w2.png" alt="Terasa a zahrada statku U Cerhů – venkovní posezení a dvorek s výhledem" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w5.png" alt="Exteriér a interiér statku U Cerhů v Kněžmostě – příjezdová cesta, strom a sál" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-1_websize.jpg" alt="Zahrada a dvůr statku U Cerhů připravené na svatební oslavy – světýlka a slavnostní výzdoba" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/kavarnička.jpg" alt="Svatební kavárnička U Cerhů – zastřešená terasa s dřevěným nábytkem, grillem a logem U Cerhů v historickém statku Kněžmost" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/kuchyne.jpg" alt="Profesionální kuchyně statku U Cerhů – gastro vybavení pro přípravu svatebních hostin a rodinných oslav v Kněžmostě" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/sal-kachlova-kamna.jpg" alt="Hlavní sál statku U Cerhů – historická zelená kachlová kamna, bar a dřevěné posezení pro svatební hosty" class="w-full block" loading="lazy"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6857.jpg" alt="Letecký pohled na statek U Cerhů v Kněžmostě – historická budova s arkádami a zahradou" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6856.jpg" alt="Dronový pohled na areál statku U Cerhů – hlavní budova, stodola a zahrada v Kněžmostě" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-5285.jpg" alt="Večerní atmosféra statku U Cerhů – osvětlené arkády a terasa s pohádkovými světýlky" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6605.jpg" alt="Levandulová zahrada statku U Cerhů v Kněžmostě – romantická atmosféra Českého ráje" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6571.jpg" alt="Dvorek statku U Cerhů v Kněžmostě – zelené stromy, travnatá plocha a historické budovy" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6513.jpg" alt="Zahrada statku U Cerhů – okrasný strom s lavičkou a pohled na domek pro hosty" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6516.jpg" alt="Arkádový dvůr statku U Cerhů – historické oblouky, kvetoucí okna a zelená zahrada" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6806.jpg" alt="Pohled z podloubí statku U Cerhů na zahradu – historická architektura a letní stromy" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6599.jpg" alt="Arkádová chodba hlavní budovy statku U Cerhů – historické oblouky a dřevěné zábradlí" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6580.jpg" alt="Venkovní bar statku U Cerhů – přenosný barový pult s vínem na zahradě v Kněžmostě" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6570.jpg" alt="Letní dvůr statku U Cerhů – barový pult s vínem pod stromy v zahradě" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6579.jpg" alt="Přivítání v Hostinci U Cerhů – vintage nástěnka s pohlednicemi a nápisem U Cerhů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/stodola.png" alt="Vinotéka a bar statku U Cerhů – historický prostor s výběrem vín a nápojů" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w2.png" alt="Terasa a zahrada statku U Cerhů – venkovní posezení a dvorek s výhledem" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/w5.png" alt="Exteriér a interiér statku U Cerhů v Kněžmostě – příjezdová cesta, strom a sál" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/FOTO-1_websize.jpg" alt="Zahrada a dvůr statku U Cerhů připravené na svatební oslavy – světýlka a slavnostní výzdoba" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/kavarnička.jpg" alt="Svatební kavárnička U Cerhů – zastřešená terasa s dřevěným nábytkem, grillem a logem U Cerhů v historickém statku Kněžmost" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/kuchyne.jpg" alt="Profesionální kuchyně statku U Cerhů – gastro vybavení pro přípravu svatebních hostin a rodinných oslav v Kněžmostě" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/sal-kachlova-kamna.jpg" alt="Hlavní sál statku U Cerhů – historická zelená kachlová kamna, bar a dřevěné posezení pro svatební hosty" class="w-full block" loading="lazy" decoding="async"></figure>
                 </div>
             </div>
 
             <div class="reveal">
                 <p class="text-xs font-semibold tracking-[0.2em] uppercase text-sage mb-4">Ubytování</p>
                 <div class="gallery-grid">
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6584.jpg" alt="Historický pokoj v hlavní budově statku U Cerhů – parketová podlaha, historická okna a vlastní koupelna" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6583.jpg" alt="Ložnice v hlavní budově statku U Cerhů – dvoulůžkový pokoj s dřevěnou podlahou" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6576.jpg" alt="Obývací pokoj s kuchyní v novém apartmánu U Cerhů – prázdninový domek s podkrovní ložnicí" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6577.jpg" alt="Apartmán v prázdninovém domku U Cerhů – prostorný obývací pokoj se schodištěm do podkroví" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6574.jpg" alt="Podkrovní ložnice nového apartmánu U Cerhů – dřevěné trámy, střešní okno a útulná atmosféra" class="w-full block" loading="lazy"></figure>
-                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6575.jpg" alt="Interiér nového apartmánu U Cerhů – moderní schodiště do podkroví s dřevěnými prvky" class="w-full block" loading="lazy"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6584.jpg" alt="Historický pokoj v hlavní budově statku U Cerhů – parketová podlaha, historická okna a vlastní koupelna" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6583.jpg" alt="Ložnice v hlavní budově statku U Cerhů – dvoulůžkový pokoj s dřevěnou podlahou" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6576.jpg" alt="Obývací pokoj s kuchyní v novém apartmánu U Cerhů – prázdninový domek s podkrovní ložnicí" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6577.jpg" alt="Apartmán v prázdninovém domku U Cerhů – prostorný obývací pokoj se schodištěm do podkroví" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6574.jpg" alt="Podkrovní ložnice nového apartmánu U Cerhů – dřevěné trámy, střešní okno a útulná atmosféra" class="w-full block" loading="lazy" decoding="async"></figure>
+                    <figure class="photo-zoom rounded-xl overflow-hidden shadow-sm"><img src="assets/images/img-6575.jpg" alt="Interiér nového apartmánu U Cerhů – moderní schodiště do podkroví s dřevěnými prvky" class="w-full block" loading="lazy" decoding="async"></figure>
                 </div>
             </div>
         </div>
@@ -707,7 +717,7 @@
     <div class="flex items-center justify-center py-4 bg-cream" aria-hidden="true">
         <div class="flex items-center gap-5 max-w-xs mx-auto w-full">
             <span class="flex-1 h-px bg-gradient-to-r from-transparent to-sage/30"></span>
-            <img src="assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);">
+            <img src="assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);" loading="lazy">
             <span class="flex-1 h-px bg-gradient-to-l from-transparent to-sage/30"></span>
         </div>
     </div>
@@ -760,7 +770,7 @@
     <!-- ═══════════════════ KONTAKT ═══════════════════ -->
     <section id="kontakt" class="py-24 sm:py-36 bg-ink-deep text-white relative overflow-hidden">
         <div class="absolute inset-0 opacity-10" aria-hidden="true">
-            <img src="assets/images/img-6827.jpg" alt="" class="w-full h-full object-cover">
+            <img src="assets/images/img-6827.jpg" alt="" class="w-full h-full object-cover" loading="lazy" decoding="async">
             <div class="absolute inset-0 bg-ink-deep/80"></div>
         </div>
 
@@ -863,7 +873,7 @@
             <div class="grid md:grid-cols-12 gap-10 pb-12 border-b border-white/8">
                 <div class="md:col-span-5">
                     <a href="#hero" class="inline-block mb-5" aria-label="U Cerhů – domů">
-                        <img src="assets/images/logo-uc.png" alt="U Cerhů logo" class="h-10 w-auto" style="mix-blend-mode: lighten;">
+                        <img src="assets/images/logo-uc.png" alt="U Cerhů logo" class="h-10 w-auto" style="mix-blend-mode: lighten;" loading="lazy">
                     </a>
                     <p class="text-white/55 leading-relaxed text-sm max-w-sm">
                         Hledáte dokonalé svatební místo v Českém ráji? Historický statek U Cerhů v Kněžmostě je ideálně dostupný z Jičína (25 min), Turnova (25 min), Liberce (35 min) i Prahy (45 min).
