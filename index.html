@@ -972,12 +972,51 @@
         const form = document.getElementById('bookingForm');
         const status = document.getElementById('formStatus');
         if (form) {
-            form.addEventListener('submit', e => {
+            form.addEventListener('submit', async e => {
                 e.preventDefault();
                 if (!form.checkValidity()) { form.reportValidity(); return; }
-                status.classList.remove('hidden');
-                form.reset();
-                setTimeout(() => status.classList.add('hidden'), 6000);
+
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                btn.disabled = true;
+                btn.innerHTML = '<svg class="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/></svg> Odesílám…';
+
+                const data = {
+                    name: form.name.value,
+                    phone: form.phone.value,
+                    email: form.email.value,
+                    date: form.date.value,
+                    guests: form.guests.value,
+                    message: form.message.value,
+                };
+
+                try {
+                    const res = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                    });
+
+                    if (res.ok) {
+                        status.textContent = 'Děkujeme! Ozveme se co nejdříve.';
+                        status.classList.remove('hidden', 'text-red-400');
+                        status.classList.add('text-sage-light');
+                        form.reset();
+                        setTimeout(() => status.classList.add('hidden'), 7000);
+                    } else {
+                        const err = await res.json().catch(() => ({}));
+                        status.textContent = err.error || 'Nepodařilo se odeslat zprávu. Zkuste to prosím znovu.';
+                        status.classList.remove('hidden', 'text-sage-light');
+                        status.classList.add('text-red-400');
+                    }
+                } catch {
+                    status.textContent = 'Chyba připojení. Zkuste to prosím znovu.';
+                    status.classList.remove('hidden', 'text-sage-light');
+                    status.classList.add('text-red-400');
+                } finally {
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                }
             });
         }
 
