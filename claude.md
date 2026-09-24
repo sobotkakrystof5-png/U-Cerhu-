@@ -11,11 +11,11 @@
 | Položka | Hodnota |
 |---|---|
 | **Projekt** | Web statku U Cerhů — svatební místo & ubytování |
-| **Soubor** | `index.html` (single-file SPA) |
+| **Architektura** | statický multi-page web (viz sekce 3), bez build systému |
 | **Vlastník** | Jiří Bartoň, Na Rynku 7, 294 02 Kněžmost |
 | **Telefon** | +420 605 971 109 |
 | **Email** | jiri_barton@centrum.cz |
-| **Domain** | ucerhu.cz |
+| **Domain** | u-cerhu.cz |
 | **GPS** | 50.4892°N, 15.0383°E |
 | **Instagram** | https://www.instagram.com/ucerhu/ |
 | **Facebook** | https://www.facebook.com/profile.php?id=100064278752605 |
@@ -28,44 +28,50 @@
 HTML5 (sémantický)  +  Tailwind CSS (CDN)  +  Vanilla JavaScript
 ```
 
-- **Žádné frameworky** (React, Vue, Angular…) — projekt je single-file HTML.
+- **Žádné frameworky** (React, Vue, Angular…) a **žádný build systém / SSG** — čisté `.html` soubory, hlavička/patička/`<head>` boilerplate se mezi stránkami kopíruje 1:1 (viz sekce 3).
 - **Žádné npm závislosti** ve výstupu — vše přes CDN.
-- **Žádné `// TODO` placeholdery** — každý úsek musí být plně implementován.
-- Tailwind loaded via: `<script src="https://cdn.tailwindcss.com"></script>`
+- **Žádné `// TODO` placeholdery** — každý úsek musí být plně implementován. Jediná povolená výjimka je značka `[DOPLNIT: ...]` pro fakta nepodložená obsahem webu/zadáním (ceny, konkrétní jména, fotky) — musí být uvedena i v závěrečném shrnutí pro klienta.
+- Tailwind loaded via: `<script src="https://cdn.tailwindcss.com"></script>` + identický `tailwind.config` (barvy/fonty, sekce 4) na každé stránce.
 - Fonty přes Google Fonts CDN:
-  - Headings: **Playfair Display** (serif)
-  - Body: **Inter** nebo **Montserrat** (sans-serif)
+  - Headings/display: **Playfair Display** (serif) + **Bebas Neue** (display)
+  - Body: **Inter**
 
 ---
 
-## 3. Architektura souboru
+## 3. Architektura webu — multi-page (od 09/2026)
 
-Projekt je **jediný soubor `index.html`**. Struktura dokumentu:
+Web je **statický multi-page web**, bez includes/partials a bez build systému. Každá URL je samostatný soubor `slozka/index.html`, servírovaný jako `/slozka/` (trailing slash, žádné `.html` v URL). Nová pravidla nahrazují dřívější „single-file SPA" konvenci — důvodem je pillar–cluster SEO architektura (viz `SEO-fixes.md`), která vyžaduje unikátní title/H1/meta na každou skupinu klíčových slov.
 
 ```
-<head>
-  ├── <meta> SEO + OG tagy
-  ├── <title>
-  ├── Schema.org JSON-LD (WeddingVenue + LocalBusiness)
-  ├── Google Fonts link
-  └── Tailwind CDN + inline <style> pro custom CSS
-
-<body>
-  ├── <header> — sticky nav + hamburger
-  ├── <main>
-  │   ├── #hero         — fullscreen hero + logo watermark
-  │   ├── #pribeh       — Příběh & Historie (rok 1590, r. 1907)
-  │   ├── #svatby       — Svatby & Kapacity (hlavní konverzní sekce)
-  │   ├── #ubytovani    — Ubytování (23 lůžek, pokoje + apartmány)
-  │   ├── #terminy      — Volné termíny 2026 (JS kalendář)
-  │   ├── #galerie      — Foto galerie (Unsplash placeholdery)
-  │   ├── #reference    — Recenze novomanželů
-  │   └── #okoli        — Dostupnost & atrakce v okolí
-  └── <footer>
-      ├── SEO lokální hub text
-      ├── Kontaktní formulář
-      └── Sociální sítě + Google Maps iframe placeholder
+/
+├── index.html                                — domovská stránka: #hero, #pribeh, #vitejte,
+│                                                #galerie, #okoli, #kontakt (plné anchor sekce)
+│                                                + #svatby, #ubytovani (KRÁTKÉ teasery s CTA
+│                                                na plné pilíře — bez duplicitního obsahu)
+├── svatby/
+│   ├── index.html                            ← PILÍŘ /svatby/
+│   ├── svatby-mlada-boleslav/index.html       ← lokální cluster
+│   ├── svatby-liberec/index.html              ← lokální cluster
+│   └── svatebni-catering/index.html           ← produktový cluster
+├── ubytovani/index.html                      ← PILÍŘ /ubytovani/
+├── oslavy-a-vyroci/index.html                 ← nová služba
+├── okoli-cesky-raj/
+│   ├── index.html                            ← PILÍŘ (turistika/okolí)
+│   └── zricenina-hradu-valecov/index.html     ← cluster podstránka
+├── magazin/
+│   ├── index.html                            ← blogový rozcestník
+│   ├── jak-naplanovat-svatbu-na-statku/index.html
+│   ├── kolik-stoji-svatba-cesky-raj/index.html
+│   └── svatebni-fotograf-cesky-raj/index.html
+├── sitemap.xml
+├── robots.txt
+└── api/contact.js                            — Vercel serverless funkce, sdílená všemi kontakt formuláři
 ```
+
+### Sdílená šablona stránky (kopíruj beze změny na každou novou stránku)
+- **`<head>`**: meta charset/viewport, unikátní `<title>` / `<meta name="description">` / `<link rel="canonical">`, `og:*` a `twitter:*` tagy (title/description/url přizpůsobit dané stránce, zbytek identický), favicon, Google Fonts `<link>`, Tailwind CDN + identický `tailwind.config`, JSON-LD (plné `LocalBusiness`/`EventVenue` schéma na pilířích a homepage, `BreadcrumbList` + lehčí `WebPage`/`Article` schéma na cluster/magazín stránkách).
+- **`<body>`**: identická hlavička (`#navbar`, desktop nav, hamburger, mobile menu) a `<footer>` jako na homepage, jen s aktuální nav položkou zvýrazněnou. **Cesty k obrázkům a interní odkazy musí být root-relative** (`/assets/images/...`, `/svatby/`), nikdy relativní (`assets/images/...`, `#svatby`) — jinak se na vnořených URL rozbijí.
+- Divider (přeškrtnutý kruh SVG, sekce 4) mezi obsahovými bloky, `reveal` scroll animace, identický `<script>` blok pro hamburger/reveal/rok v patičce/formulář.
 
 ---
 
@@ -228,11 +234,13 @@ Format URL: `https://images.unsplash.com/photo-{ID}?w=800&q=80`
 
 ## 11. Cenová politika — ZÁVAZNÉ zobrazení
 
-Ceny **nikdy nezobrazovat** jako pevné číslo.
-Vždy použít CTA variantu:
+Ceny se **nevymýšlí** a nový nepodložený údaj se nikdy nezobrazuje jako pevné číslo.
+Výchozí forma je CTA varianta:
 
 - Ubytování: _„Ceny na vyžádání — kontaktujte nás"_
 - Pronájem areálu na svatbu: _„Cena pronájmu na vyžádání — rádi vám připravíme nabídku na míru"_
+
+Výjimka: rozpětí **45 000 – 75 000 Kč** za pronájem areálu na svatbu je již veřejně zobrazené na homepage (sekce Svatby) i ve Schema.org JSON-LD (`priceRange`) — tuto existující, klientem potvrzenou hodnotu lze citovat i na nových stránkách jako referenci. Nejde o výjimku pro nové, neověřené částky.
 
 ---
 
@@ -259,24 +267,30 @@ Vždy zobrazovat jako icon grid nebo bullet list v sekci Svatby:
 2. Zkontroluj, zda úprava neporušuje povinné copy (sekce 6).
 3. Zkontroluj, zda zůstávají správné kontaktní údaje (sekce 1).
 
-### Při přidávání nové sekce/komponenty:
+### Při přidávání nové stránky/sekce/komponenty:
 1. Drž se design systému (sekce 4) — barvy, fonty, logo.
-2. Přidej sémantický HTML5 element s `id` pro scroll-navigaci.
-3. Přidej odpovídající nav item s anchor linkem.
-4. Zkontroluj WCAG AA (sekce 9).
+2. Nová URL = nová složka `slozka/index.html`, ne nový soubor na homepage (viz sekce 3) — výjimkou jsou anchor sekce, které zůstávají jen na homepage (`#vitejte`, `#galerie`, `#kontakt`…).
+3. Zkopíruj hlavičku/patičku/`<head>` boilerplate ze sdílené šablony (sekce 3), uprav jen title/meta/canonical/OG a zvýrazněnou nav položku — nevymýšlej novou strukturu nav/footeru.
+4. Použij root-relative cesty (`/assets/images/...`, `/svatby/...`), nikdy relativní.
+5. Přidej odpovídající nav item (header + footer) na **všech** stránkách, kde se sdílená hlavička/patička kopíruje, ne jen na nové stránce.
+6. Zajisti, že nová stránka má odkaz na svůj pilíř a naopak (interní prolinkování) — žádná stránka nesmí zůstat „osiřelá".
+7. Přidej novou URL do `sitemap.xml`.
+8. Zkontroluj WCAG AA (sekce 9).
 
 ### Při SEO úpravách:
 1. Title tag nesmí být zkracován ani přeformulován.
-2. Schema.org JSON-LD vždy aktualizuj při změně kontaktů/kapacit.
+2. Schema.org JSON-LD vždy aktualizuj při změně kontaktů/kapacit — a to na **všech** stránkách, kde je zkopírované (pilíře + homepage).
 3. Target keywords z sekce 5 musí zůstat zastoupeny v H1–H3.
+4. Fráze „svatby", „svatby Český ráj", „svatební statek", „svatební místo", „prostory na svatbu" cílí výhradně na `/svatby/` — nikdy nevytvářet pro ně samostatnou konkurenční URL (kanibalizace klíčových slov).
 
 ### Zakázané operace:
-- ❌ Nezavádět npm / node_modules do projektu
-- ❌ Nerozdělovat projekt na více souborů (musí zůstat single-file)
+- ❌ Nezavádět npm / node_modules, build systém ani SSG do projektu
+- ❌ Vytvářet duplicitní obsah mezi homepage teaserem a pilířovou stránkou (homepage teaser `#svatby`/`#ubytovani` musí zůstat krátký, plný text patří na `/svatby/` a `/ubytovani/`)
 - ❌ Neměnit povinné copy bloky (sekce 6)
-- ❌ Neuvádět pevné ceny (sekce 11)
+- ❌ Uvádět u nového obsahu vymyšlené ceny/fakta bez `[DOPLNIT: ...]` značky (sekce 11 popisuje výchozí CTA formulace; existující zveřejněná cena 45 000–75 000 Kč z homepage/JSON-LD lze citovat jako referenci, nový nepodložený údaj ne)
 - ❌ Neodstraňovat Schema.org JSON-LD
 - ❌ Nepoužívat generické `alt=""` na obrázky
+- ❌ Používat na nových stránkách relativní cesty k assetům/interním odkazům (viz sekce 3)
 
 ---
 
