@@ -149,7 +149,7 @@ Tyto textové bloky musí být zachovány doslova při každé úpravě:
 
 ## 7. Kapacity & data — ZÁVAZNÁ referenční tabulka
 
-### Ubytování — 23 lůžek celkem
+### Ubytování — 25 lůžek celkem
 
 | Název | Lůžka | Poznámka |
 |---|---|---|
@@ -158,7 +158,7 @@ Tyto textové bloky musí být zachovány doslova při každé úpravě:
 | Pokoj 3 (hlavní budova) | 5 | Vlastní sociální zařízení, prémiové vybavení |
 | Apartmán 1 (prázdninový domek) | 5 | Plně vybavená kuchyňka, soc. zařízení — **NOVÉ** |
 | Apartmán 2 (prázdninový domek) | 5 | Plně vybavená kuchyňka, soc. zařízení — **NOVÉ** |
-| **Celkem** | **23** | |
+| **Celkem** | **25** | Klient 10/2026 potvrdil 25 lůžek celkem — rozpis po pokojích výše zatím dává 23, [DOPLNIT: kde přibyla 2 lůžka] |
 
 ### Svatební kapacity
 
@@ -249,7 +249,7 @@ Výjimka: rozpětí **45 000 – 75 000 Kč** za pronájem areálu na svatbu je 
 Vždy zobrazovat jako icon grid nebo bullet list v sekci Svatby:
 
 1. **Exkluzivita** — 1 svatba = celý areál jen váš
-2. **Ubytování přímo v areálu** (23 lůžek)
+2. **Ubytování přímo v areálu** (25 lůžek)
 3. **Venkovní i vnitřní obřad**
 4. **Historický statek s duší od r. 1590**
 5. **3 generace rodinné pohostinnosti**

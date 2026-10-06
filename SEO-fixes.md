@@ -127,19 +127,18 @@ označený placeholder `[DOPLNIT: ...]` a uveď to v závěrečném shrnutí.
 
 - **Title:** `Svatební catering a menu | U Cerhů, Český ráj`
 - **H1:** `Svatební catering přímo v areálu statku`
-- **Meta description:** `Profesionální kuchyně přímo na statku. Ukázky svatebních menu, možnost degustace a catering na míru vaší svatební hostině.`
+- **Meta description:** `Profesionální kuchyně na statku, top kuchaři a partnerské cateringy, které areál dobře znají. Ukázky svatebních menu a catering na míru vaší hostině.`
 - **Osnova obsahu:**
   1. Úvod — catering přímo v areálu, profesionální kuchyně
-  2. Jak probíhá tvorba menu (degustace, individuální přizpůsobení)
+  2. Top kuchaři a partnerské cateringy (Luciz Catering, Familia Catering, Pavel Vedral
+     a další) — degustace se nenabízí, klient potvrdil 09/2026, neuvádět
   3. Ukázky svatebních menu — 2–3 kompletní příklady (předkrm/hlavní chod/dezert, raut
      varianta) — `[DOPLNIT: konkrétní chody]`, pokud nejsou v podkladech
   4. Speciální diety (bezlepkové, veganské)
   5. CTA → poptávkový formulář / odkaz zpět na `/svatby/`
-- **Důležité:** pokud catering zajišťuje externí dodavatel (ne statek sám), musí to
-  stránka transparentně uvést — `[DOPLNIT: potvrdit s klientem, zda catering zajišťuje
-  statek nebo externí dodavatel]`. Pokud existuje dodavatel se svým webem, připrav na
-  stránce místo pro partnerský odkaz (samotné navázání spolupráce/backlinku je mimo
-  scope tohoto promptu, viz kap. 6 zdrojového dokumentu).
+- **Důležité:** catering zajišťují doporučení partneři (potvrzeno klientem 09/2026) a
+  stránka to transparentně uvádí. Odkazy na weby partnerů zatím nejsou — navázání
+  spolupráce/backlinku je mimo scope tohoto promptu, viz kap. 6 zdrojového dokumentu.
 
 ### 3.5 `/oslavy-a-vyroci/` (nová stránka, nová služba)
 
