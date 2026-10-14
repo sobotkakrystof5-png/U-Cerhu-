@@ -115,6 +115,24 @@
         @media (hover: none) {
             .photo-zoom img { transition: none; }
         }
+        /* Statek v číslech — ledger */
+        .ledger { --num-h: 5.75rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px double rgba(15,23,42,.22); border-bottom: 1px solid rgba(15,23,42,.22); }
+        .ledger > div { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.75rem .5rem 1.5rem; }
+        .ledger > div + div { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .ledger--grid > div + div { border-left: 0; }
+        .ledger--grid > div:nth-child(even) { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid > div:nth-child(n+3) { border-top: 1px solid rgba(96,108,56,.25); }
+        .ledger dt { color: #606C38; font-size: .6875rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+        .ledger-num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(2.6rem, 6vw, 4.25rem); line-height: 1; color: #0F172A; height: var(--num-h); margin-top: .5rem; display: flex; align-items: center; }
+        .ledger-note { font-size: .8125rem; line-height: 1.35; color: rgba(30,41,59,.68); max-width: 11rem; margin-top: .35rem; }
+        .ledger-num--key { color: #606C38; font-weight: 700; font-size: clamp(4rem, 9vw, 6.25rem); }
+        @media (max-width: 639px) {
+            .ledger { --num-h: 4rem; }
+            .ledger > div { padding: 1.25rem .35rem 1.1rem; }
+            .ledger dt { font-size: .625rem; letter-spacing: .14em; }
+            .ledger-note { font-size: .75rem; }
+        }
     </style>
 </head>
 
@@ -201,7 +219,7 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="reveal">
                     <p class="text-sage text-xs font-semibold tracking-[0.2em] uppercase mb-5">Tip na výlet z Kněžmostu</p>
-                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">Zřícenina hradu Valečov - výlet od statku U Cerhů</h1>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">Zřícenina hradu Valečov - výlet od statku U&nbsp;Cerhů</h1>
                     <p class="text-ink/75 text-lg leading-relaxed mb-6">
                         Jen 3 km pěší turistické trasy od statku U Cerhů se tyčí <strong class="text-ink">zřícenina hradu Valečov</strong>, podle mnoha zdrojů největší skalní hrad v České republice. Skalní hrad vytesaný přímo do pískovcových bloků je jedním z nejvýraznějších symbolů Českého ráje.
                     </p>

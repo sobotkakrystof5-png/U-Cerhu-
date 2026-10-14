@@ -135,6 +135,24 @@
         @media (hover: none) {
             .photo-zoom img { transition: none; }
         }
+        /* Statek v číslech — ledger */
+        .ledger { --num-h: 5.75rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px double rgba(15,23,42,.22); border-bottom: 1px solid rgba(15,23,42,.22); }
+        .ledger > div { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.75rem .5rem 1.5rem; }
+        .ledger > div + div { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .ledger--grid > div + div { border-left: 0; }
+        .ledger--grid > div:nth-child(even) { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid > div:nth-child(n+3) { border-top: 1px solid rgba(96,108,56,.25); }
+        .ledger dt { color: #606C38; font-size: .6875rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+        .ledger-num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(2.6rem, 6vw, 4.25rem); line-height: 1; color: #0F172A; height: var(--num-h); margin-top: .5rem; display: flex; align-items: center; }
+        .ledger-note { font-size: .8125rem; line-height: 1.35; color: rgba(30,41,59,.68); max-width: 11rem; margin-top: .35rem; }
+        .ledger-num--key { color: #606C38; font-weight: 700; font-size: clamp(4rem, 9vw, 6.25rem); }
+        @media (max-width: 639px) {
+            .ledger { --num-h: 4rem; }
+            .ledger > div { padding: 1.25rem .35rem 1.1rem; }
+            .ledger dt { font-size: .625rem; letter-spacing: .14em; }
+            .ledger-note { font-size: .75rem; }
+        }
     </style>
 </head>
 
@@ -219,7 +237,7 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="reveal">
                     <p class="text-sage text-xs font-semibold tracking-[0.2em] uppercase mb-5">Svatby v Českém ráji</p>
-                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">Svatební statek U Cerhů - svatby v srdci Českého ráje</h1>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">Svatební statek U&nbsp;Cerhů - svatby v srdci Českého ráje</h1>
                     <p class="text-ink/75 text-lg leading-relaxed mb-6">
                         Hledáte <strong class="text-ink">svatební místo</strong>, kde budete mít celý areál jen pro sebe? <strong class="text-ink">Svatební statek U Cerhů</strong> v Kněžmostě nabízí přesně to: historické <strong class="text-ink">prostory na svatbu</strong> uprostřed Českého ráje, kde se koná vždy jen jedna svatba na víkend.
                     </p>
@@ -260,20 +278,23 @@
                 <p class="text-ink/70 text-lg leading-relaxed">Vždy pouze <strong class="text-ink">jedna svatba týdně</strong>. Žádný spěch, absolutní soukromí, klid na přípravy i na svatbu samotnou. Svatební statek patří po celý víkend jen vám.</p>
             </div>
 
-            <div class="grid sm:grid-cols-3 gap-4 mb-10 reveal">
-                <div class="bg-cream rounded-xl p-6 text-center shadow-sm">
-                    <p class="font-serif text-4xl font-bold text-ink-deep">100</p>
-                    <p class="text-xs text-ink/55 uppercase tracking-wide mt-1">hostů max</p>
+            <dl class="ledger reveal max-w-4xl mx-auto mb-12">
+                <div>
+                    <dt>Hosté</dt>
+                    <dd class="ledger-num">100</dd>
+                    <dd class="ledger-note">nejvýše u svatební tabule</dd>
                 </div>
-                <div class="bg-ink-deep rounded-xl p-6 text-center shadow-sm">
-                    <p class="font-serif text-4xl font-bold text-sage-light">1</p>
-                    <p class="text-xs text-white/60 uppercase tracking-wide mt-1">svatba / víkend</p>
+                <div>
+                    <dt>Exkluzivita</dt>
+                    <dd class="ledger-num ledger-num--key">1</dd>
+                    <dd class="ledger-note">svatba na celý víkend</dd>
                 </div>
-                <div class="bg-cream rounded-xl p-6 text-center shadow-sm">
-                    <p class="font-serif text-4xl font-bold text-ink-deep">25</p>
-                    <p class="text-xs text-ink/55 uppercase tracking-wide mt-1">lůžek v areálu</p>
+                <div>
+                    <dt>Nocleh</dt>
+                    <dd class="ledger-num">25</dd>
+                    <dd class="ledger-note">lůžek přímo v areálu</dd>
                 </div>
-            </div>
+            </dl>
 
             <div class="reveal bg-sage text-white rounded-2xl px-6 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-3xl mx-auto">
                 <div class="text-center sm:text-left">
@@ -367,7 +388,11 @@
                 <p class="text-sage text-xs font-semibold tracking-[0.2em] uppercase mb-4">Plánujete svatbu odjinud?</p>
                 <h2 class="font-serif text-4xl sm:text-5xl font-bold leading-tight">Kam dál</h2>
             </div>
-            <div class="reveal grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="reveal grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <a href="/svatby/svatba-u-prahy/" class="group bg-creamdark rounded-2xl p-6 hover:bg-sage transition-colors duration-300">
+                    <p class="font-serif text-lg font-semibold text-ink group-hover:text-white transition-colors mb-2">Svatba u Prahy</p>
+                    <p class="text-sm text-ink/60 group-hover:text-white/80 transition-colors">Svatba mimo Prahu, ale jen 45 minut od ní, kousek od dálnice D10 →</p>
+                </a>
                 <a href="/svatby/svatby-mlada-boleslav/" class="group bg-creamdark rounded-2xl p-6 hover:bg-sage transition-colors duration-300">
                     <p class="font-serif text-lg font-semibold text-ink group-hover:text-white transition-colors mb-2">Svatby Mladá Boleslav</p>
                     <p class="text-sm text-ink/60 group-hover:text-white/80 transition-colors">Svatbu plánujete z Mladé Boleslavi? Podívejte se, jak snadno se k nám dostanete →</p>
@@ -380,7 +405,7 @@
                     <p class="font-serif text-lg font-semibold text-ink group-hover:text-white transition-colors mb-2">Svatební catering</p>
                     <p class="text-sm text-ink/60 group-hover:text-white/80 transition-colors">Profesionální kuchyně přímo v areálu, menu na míru vaší hostině →</p>
                 </a>
-                <a href="/ubytovani/" class="group bg-creamdark rounded-2xl p-6 hover:bg-sage transition-colors duration-300">
+                <a href="/ubytovani/" class="sm:col-span-2 group bg-creamdark rounded-2xl p-6 hover:bg-sage transition-colors duration-300">
                     <p class="font-serif text-lg font-semibold text-ink group-hover:text-white transition-colors mb-2">Ubytování pro hosty</p>
                     <p class="text-sm text-ink/60 group-hover:text-white/80 transition-colors">25 lůžek přímo na statku, hosté nemusí nikam spěchat →</p>
                 </a>

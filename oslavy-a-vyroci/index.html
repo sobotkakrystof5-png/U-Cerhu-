@@ -135,6 +135,24 @@
         @media (hover: none) {
             .photo-zoom img { transition: none; }
         }
+        /* Statek v číslech — ledger */
+        .ledger { --num-h: 5.75rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px double rgba(15,23,42,.22); border-bottom: 1px solid rgba(15,23,42,.22); }
+        .ledger > div { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.75rem .5rem 1.5rem; }
+        .ledger > div + div { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .ledger--grid > div + div { border-left: 0; }
+        .ledger--grid > div:nth-child(even) { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid > div:nth-child(n+3) { border-top: 1px solid rgba(96,108,56,.25); }
+        .ledger dt { color: #606C38; font-size: .6875rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+        .ledger-num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(2.6rem, 6vw, 4.25rem); line-height: 1; color: #0F172A; height: var(--num-h); margin-top: .5rem; display: flex; align-items: center; }
+        .ledger-note { font-size: .8125rem; line-height: 1.35; color: rgba(30,41,59,.68); max-width: 11rem; margin-top: .35rem; }
+        .ledger-num--key { color: #606C38; font-weight: 700; font-size: clamp(4rem, 9vw, 6.25rem); }
+        @media (max-width: 639px) {
+            .ledger { --num-h: 4rem; }
+            .ledger > div { padding: 1.25rem .35rem 1.1rem; }
+            .ledger dt { font-size: .625rem; letter-spacing: .14em; }
+            .ledger-note { font-size: .75rem; }
+        }
     </style>
 </head>
 
@@ -219,7 +237,7 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="reveal">
                     <p class="text-sage text-xs font-semibold tracking-[0.2em] uppercase mb-5">Oslavy a výročí v Českém ráji</p>
-                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">Oslavte výročí nebo rodinnou událost na statku U Cerhů</h1>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">Oslavte výročí nebo rodinnou událost na statku U&nbsp;Cerhů</h1>
                     <p class="text-ink/75 text-lg leading-relaxed mb-6">
                         Statek U Cerhů není jen svatební místo. Stejná <strong class="text-ink">exkluzivita</strong>, díky které je U Cerhů oblíbenou volbou pro svatby v Českém ráji, funguje skvěle i pro jiné rodinné události. Celý historický areál v Kněžmostě patří po dobu vaší akce jen vám a vašim hostům.
                     </p>
@@ -305,24 +323,28 @@
                         Poptat termín oslavy
                     </a>
                 </div>
-                <div class="reveal order-1 lg:order-2 grid grid-cols-2 gap-4">
-                    <div class="bg-creamdark rounded-xl p-6 text-center">
-                        <p class="font-serif text-4xl font-bold text-ink-deep">100</p>
-                        <p class="text-xs text-ink/55 uppercase tracking-wide mt-1">hostů max</p>
+                <dl class="reveal order-1 lg:order-2 ledger ledger--grid">
+                    <div>
+                        <dt>Hosté</dt>
+                        <dd class="ledger-num">100</dd>
+                        <dd class="ledger-note">nejvýše na oslavě</dd>
                     </div>
-                    <div class="bg-ink-deep rounded-xl p-6 text-center">
-                        <p class="font-serif text-4xl font-bold text-sage-light">25</p>
-                        <p class="text-xs text-white/60 uppercase tracking-wide mt-1">lůžek v areálu</p>
+                    <div>
+                        <dt>Nocleh</dt>
+                        <dd class="ledger-num">25</dd>
+                        <dd class="ledger-note">lůžek přímo v areálu</dd>
                     </div>
-                    <div class="bg-ink-deep rounded-xl p-6 text-center">
-                        <p class="font-serif text-4xl font-bold text-sage-light">1</p>
-                        <p class="text-xs text-white/60 uppercase tracking-wide mt-1">akce / víkend</p>
+                    <div>
+                        <dt>Exkluzivita</dt>
+                        <dd class="ledger-num ledger-num--key">1</dd>
+                        <dd class="ledger-note">akce na celý víkend</dd>
                     </div>
-                    <div class="bg-creamdark rounded-xl p-6 text-center">
-                        <p class="font-serif text-4xl font-bold text-ink-deep">1590</p>
-                        <p class="text-xs text-ink/55 uppercase tracking-wide mt-1">historie od</p>
+                    <div>
+                        <dt>Historie</dt>
+                        <dd class="ledger-num">1590</dd>
+                        <dd class="ledger-note">historický statek od roku</dd>
                     </div>
-                </div>
+                </dl>
             </div>
         </div>
     </section>

@@ -122,6 +122,24 @@
         @media (hover: none) {
             .photo-zoom img { transition: none; }
         }
+        /* Statek v číslech — ledger */
+        .ledger { --num-h: 5.75rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px double rgba(15,23,42,.22); border-bottom: 1px solid rgba(15,23,42,.22); }
+        .ledger > div { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.75rem .5rem 1.5rem; }
+        .ledger > div + div { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .ledger--grid > div + div { border-left: 0; }
+        .ledger--grid > div:nth-child(even) { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid > div:nth-child(n+3) { border-top: 1px solid rgba(96,108,56,.25); }
+        .ledger dt { color: #606C38; font-size: .6875rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+        .ledger-num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(2.6rem, 6vw, 4.25rem); line-height: 1; color: #0F172A; height: var(--num-h); margin-top: .5rem; display: flex; align-items: center; }
+        .ledger-note { font-size: .8125rem; line-height: 1.35; color: rgba(30,41,59,.68); max-width: 11rem; margin-top: .35rem; }
+        .ledger-num--key { color: #606C38; font-weight: 700; font-size: clamp(4rem, 9vw, 6.25rem); }
+        @media (max-width: 639px) {
+            .ledger { --num-h: 4rem; }
+            .ledger > div { padding: 1.25rem .35rem 1.1rem; }
+            .ledger dt { font-size: .625rem; letter-spacing: .14em; }
+            .ledger-note { font-size: .75rem; }
+        }
     </style>
 </head>
 
@@ -348,7 +366,6 @@
                 <div class="bg-cream rounded-2xl p-6">
                     <p class="font-semibold text-ink mb-3">Catering</p>
                     <ul class="space-y-2 text-sm text-ink/65 leading-relaxed list-disc list-inside">
-                        <li>Varianty pro vegetariány / alergiky</li>
                         <li>Dostupnost profesionální kuchyně v místě konání, více v sekci <a href="/svatby/svatebni-catering/" class="text-sage font-semibold hover:text-sage-dark underline underline-offset-2">svatební catering</a></li>
                     </ul>
                 </div>
@@ -385,7 +402,7 @@
     <section class="py-20 sm:py-28 bg-cream">
         <div class="max-w-5xl mx-auto px-5 sm:px-8">
             <div class="reveal bg-sage text-white rounded-3xl px-6 sm:px-12 py-12 sm:py-16 text-center max-w-3xl mx-auto">
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight mb-4">Jak to řeší U Cerhů</h2>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight mb-4">Jak to řeší U&nbsp;Cerhů</h2>
                 <p class="text-white/85 text-lg leading-relaxed mb-8">
                     Chcete si tyto kroky prohlédnout na konkrétním příkladu? Podívejte se, jak tyto kroky řeší svatební statek U Cerhů: od exkluzivity celého víkendu přes prostory pro obřad i hostinu až po ubytování hostů přímo v areálu.
                 </p>

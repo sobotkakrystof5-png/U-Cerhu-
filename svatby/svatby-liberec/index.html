@@ -115,6 +115,24 @@
         @media (hover: none) {
             .photo-zoom img { transition: none; }
         }
+        /* Statek v číslech — ledger */
+        .ledger { --num-h: 5.75rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px double rgba(15,23,42,.22); border-bottom: 1px solid rgba(15,23,42,.22); }
+        .ledger > div { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.75rem .5rem 1.5rem; }
+        .ledger > div + div { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .ledger--grid > div + div { border-left: 0; }
+        .ledger--grid > div:nth-child(even) { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid > div:nth-child(n+3) { border-top: 1px solid rgba(96,108,56,.25); }
+        .ledger dt { color: #606C38; font-size: .6875rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+        .ledger-num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(2.6rem, 6vw, 4.25rem); line-height: 1; color: #0F172A; height: var(--num-h); margin-top: .5rem; display: flex; align-items: center; }
+        .ledger-note { font-size: .8125rem; line-height: 1.35; color: rgba(30,41,59,.68); max-width: 11rem; margin-top: .35rem; }
+        .ledger-num--key { color: #606C38; font-weight: 700; font-size: clamp(4rem, 9vw, 6.25rem); }
+        @media (max-width: 639px) {
+            .ledger { --num-h: 4rem; }
+            .ledger > div { padding: 1.25rem .35rem 1.1rem; }
+            .ledger dt { font-size: .625rem; letter-spacing: .14em; }
+            .ledger-note { font-size: .75rem; }
+        }
     </style>
 </head>
 
@@ -201,7 +219,7 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="reveal">
                     <p class="text-sage text-xs font-semibold tracking-[0.2em] uppercase mb-5">Svatby Liberec</p>
-                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">Svatba pro páry z Liberce na statku U Cerhů</h1>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">Svatba pro páry z Liberce na statku U&nbsp;Cerhů</h1>
                     <p class="text-ink/75 text-lg leading-relaxed mb-6">
                         Hledáte <strong class="text-ink">svatební místo</strong> mimo Liberec, ale bez dlouhého cestování? Statek U Cerhů leží v srdci Českého ráje, cca 35 minut jízdy od Liberce, dost daleko na to, aby to působilo jako skutečný výlet za hranice všedních dnů, a dost blízko, aby k vám dorazili i hosté, kteří necestují rádi.
                     </p>
@@ -243,20 +261,23 @@
                     Statek U Cerhů si na jeden víkend pronajímá vždy jen jeden svatební pár. Žádná jiná akce, žádné sdílení prostor. K dispozici je exkluzivní areál pro obřad i hostinu, ať už venku pod širým nebem, nebo uvnitř historických zdí, a ubytování přímo na místě pro nejbližší hosty i rodinu, takže se svatba nemusí nikam stěhovat.
                 </p>
             </div>
-            <div class="reveal grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-                <div class="bg-cream rounded-xl p-6 text-center shadow-sm">
-                    <p class="font-serif text-4xl font-bold text-ink-deep">1</p>
-                    <p class="text-xs text-ink/55 uppercase tracking-wide mt-1">svatba / víkend</p>
+            <dl class="reveal ledger max-w-4xl mx-auto">
+                <div>
+                    <dt>Exkluzivita</dt>
+                    <dd class="ledger-num ledger-num--key">1</dd>
+                    <dd class="ledger-note">svatba na celý víkend</dd>
                 </div>
-                <div class="bg-ink-deep rounded-xl p-6 text-center shadow-sm">
-                    <p class="font-serif text-4xl font-bold text-sage-light">25</p>
-                    <p class="text-xs text-white/60 uppercase tracking-wide mt-1">lůžek v areálu</p>
+                <div>
+                    <dt>Nocleh</dt>
+                    <dd class="ledger-num">25</dd>
+                    <dd class="ledger-note">lůžek přímo v areálu</dd>
                 </div>
-                <div class="bg-cream rounded-xl p-6 text-center shadow-sm">
-                    <p class="font-serif text-4xl font-bold text-ink-deep">100</p>
-                    <p class="text-xs text-ink/55 uppercase tracking-wide mt-1">hostů max</p>
+                <div>
+                    <dt>Hosté</dt>
+                    <dd class="ledger-num">100</dd>
+                    <dd class="ledger-note">nejvýše u svatební tabule</dd>
                 </div>
-            </div>
+            </dl>
         </div>
     </section>
 

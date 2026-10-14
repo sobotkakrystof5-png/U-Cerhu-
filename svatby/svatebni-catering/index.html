@@ -115,6 +115,24 @@
         @media (hover: none) {
             .photo-zoom img { transition: none; }
         }
+        /* Statek v číslech — ledger */
+        .ledger { --num-h: 5.75rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px double rgba(15,23,42,.22); border-bottom: 1px solid rgba(15,23,42,.22); }
+        .ledger > div { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1.75rem .5rem 1.5rem; }
+        .ledger > div + div { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .ledger--grid > div + div { border-left: 0; }
+        .ledger--grid > div:nth-child(even) { border-left: 1px solid rgba(96,108,56,.25); }
+        .ledger--grid > div:nth-child(n+3) { border-top: 1px solid rgba(96,108,56,.25); }
+        .ledger dt { color: #606C38; font-size: .6875rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+        .ledger-num { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; font-size: clamp(2.6rem, 6vw, 4.25rem); line-height: 1; color: #0F172A; height: var(--num-h); margin-top: .5rem; display: flex; align-items: center; }
+        .ledger-note { font-size: .8125rem; line-height: 1.35; color: rgba(30,41,59,.68); max-width: 11rem; margin-top: .35rem; }
+        .ledger-num--key { color: #606C38; font-weight: 700; font-size: clamp(4rem, 9vw, 6.25rem); }
+        @media (max-width: 639px) {
+            .ledger { --num-h: 4rem; }
+            .ledger > div { padding: 1.25rem .35rem 1.1rem; }
+            .ledger dt { font-size: .625rem; letter-spacing: .14em; }
+            .ledger-note { font-size: .75rem; }
+        }
     </style>
 </head>
 
@@ -202,11 +220,8 @@
                 <div class="reveal">
                     <p class="text-sage text-xs font-semibold tracking-[0.2em] uppercase mb-5">Svatební catering</p>
                     <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">Svatební catering přímo v areálu statku</h1>
-                    <p class="text-ink/75 text-lg leading-relaxed mb-6">
-                        Jídlo je jednou z věcí, na kterou hosté svatby vzpomínají nejdéle. Statek U Cerhů má přímo v areálu <strong class="text-ink">profesionální kuchyni</strong> s plným gastro vybavením pro přípravu svatebních hostin. Hostina tak vzniká na místě, čerstvá, bez zdlouhavého převozu jídla přes celý kraj.
-                    </p>
-                    <p class="text-ink/70 leading-relaxed mb-8">
-                        Ať plánujete slavnostní zasedací hostinu, nebo volnější raut pod širým nebem, zázemí kuchyně na statku pokryje obě varianty.
+                    <p class="text-ink/75 text-lg leading-relaxed mb-8">
+                        Jídlo je jednou z věcí, na kterou hosté svatby vzpomínají nejdéle. Statek U Cerhů má přímo v areálu <strong class="text-ink">profesionální kuchyni</strong> s plným gastro vybavením pro přípravu svatebních hostin. Pokud si nevyberete catering, svatební hostina může vzniknout i přímo na místě v této profesionální kuchyni.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-3">
                         <a href="/#kontakt" class="inline-flex items-center justify-center gap-2.5 bg-sage hover:bg-sage-dark text-white font-semibold px-7 py-3.5 rounded-full text-sm sm:text-base transition-all duration-300 shadow-lg shadow-sage/30">
@@ -308,36 +323,6 @@
                             <li><span class="font-semibold text-ink">Dezertní stůl:</span> [DOPLNIT]</li>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════ DIVIDER ═══════════════════ -->
-    <div class="flex items-center justify-center py-4 bg-cream" aria-hidden="true">
-        <div class="flex items-center gap-5 max-w-xs mx-auto w-full">
-            <span class="flex-1 h-px bg-gradient-to-r from-transparent to-sage/30"></span>
-            <img width="1818" height="578" src="/assets/images/logo-uc.png" alt="" class="h-10 w-auto shrink-0" style="opacity:0.18; filter: invert(1);" loading="lazy">
-            <span class="flex-1 h-px bg-gradient-to-l from-transparent to-sage/30"></span>
-        </div>
-    </div>
-
-    <!-- ═══════════════════ SPECIÁLNÍ DIETY ═══════════════════ -->
-    <section class="py-20 sm:py-28 bg-creamdark">
-        <div class="max-w-7xl mx-auto px-5 sm:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-10 reveal">
-                <p class="text-sage text-xs font-semibold tracking-[0.2em] uppercase mb-4">Diety a omezení</p>
-                <h2 class="font-serif text-4xl sm:text-5xl font-bold leading-tight mb-5">Speciální diety na vyžádání</h2>
-                <p class="text-ink/70 text-lg leading-relaxed">Víme, že mezi svatebními hosty bývají i lidé se specifickými stravovacími požadavky. Bezlepkovou i veganskou variantu chodů je možné zajistit na vyžádání, stačí nám dát vědět předem při sestavování menu.</p>
-            </div>
-            <div class="reveal grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
-                <div class="flex items-center gap-3 bg-cream rounded-xl px-5 py-4 shadow-sm">
-                    <svg class="shrink-0 text-sage" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M4.9 4.9l14.2 14.2"/></svg>
-                    <p class="font-semibold text-ink">Bezlepková varianta <span class="font-normal text-ink/60">(na vyžádání)</span></p>
-                </div>
-                <div class="flex items-center gap-3 bg-cream rounded-xl px-5 py-4 shadow-sm">
-                    <svg class="shrink-0 text-sage" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4.97 0 9-4.03 9-9-4.97 0-9 4.03-9 9zM12 22C7.03 22 3 17.97 3 13c0-5 4-9 9-9"/><path d="M12 13c0-5 4-9 9-9"/></svg>
-                    <p class="font-semibold text-ink">Veganská varianta <span class="font-normal text-ink/60">(na vyžádání)</span></p>
                 </div>
             </div>
         </div>
